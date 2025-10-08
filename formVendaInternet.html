@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendas pela Internet - ABC Bolinhas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-submit:hover {
+            background-color: #5568d3;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #667eea;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛒 Vendas pela Internet</h1>
+        <p class="subtitle">Compre suas bolinhas sem sair de casa!</p>
+        
+        <form id="formVenda" onsubmit="return processarPedido(event)">
+            <div class="form-group">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="produto">Tipo de Bolinha:</label>
+                <select id="produto" name="produto" required>
+                    <option value="">Selecione...</option>
+                    <option value="bolinha-vermelha">Bolinha Vermelha</option>
+                    <option value="bolinha-azul">Bolinha Azul</option>
+                    <option value="bolinha-verde">Bolinha Verde</option>
+                    <option value="bolinha-amarela">Bolinha Amarela</option>
+                    <option value="bolinha-colorida">Bolinha Colorida (Mix)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" id="quantidade" name="quantidade" min="1" value="1" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="endereco">Endereço de Entrega:</label>
+                <textarea id="endereco" name="endereco" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="observacoes">Observações:</label>
+                <textarea id="observacoes" name="observacoes"></textarea>
+            </div>
+            
+            <button type="submit" class="btn-submit">Finalizar Pedido</button>
+        </form>
+        
+        <a href="abcBolinhas.html" class="back-link">← Voltar para página inicial</a>
+    </div>
+    
+    <script>
+        function processarPedido(event) {
+            event.preventDefault();
+            
+            const nome = document.getElementById('nome').value;
+            const produto = document.getElementById('produto').options[document.getElementById('produto').selectedIndex].text;
+            const quantidade = document.getElementById('quantidade').value;
+            
+            alert(`Pedido realizado com sucesso!\n\nCliente: ${nome}\nProduto: ${produto}\nQuantidade: ${quantidade}\n\nEm breve entraremos em contato!`);
+            
+            document.getElementById('formVenda').reset();
+            return false;
+        }
+    </script>
+</body>
+</html>
